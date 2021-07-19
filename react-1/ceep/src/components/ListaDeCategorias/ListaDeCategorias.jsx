@@ -1,5 +1,30 @@
 import React, { Component } from 'react';
-import "./estilo.css";
+import styled from "styled-components";
+
+const SectionListaCategorias = styled.section`
+  display: flex;
+  flex-direction: row;
+  margin-top: 0.75rem;
+`;
+
+const ListaCategorias = styled.ul`
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+`;
+
+const ItensCategorias = styled.li`
+  background-color: var(--secundaria);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.7rem;
+  font-family: Arial, Helvetica, sans-serif;
+`;
+
+const InputCategorias = styled.input`
+  margin-right: 1.25rem;
+`;
 
 class ListaDeCategorias extends Component {
 
@@ -29,21 +54,20 @@ class ListaDeCategorias extends Component {
 
   render() { 
     return ( 
-      <section className="lista-categorias">
-        <ul className="lista-categorias-ul">
+      <SectionListaCategorias>
+        <ListaCategorias>
           {this.state.categorias.map((categoria, index)=>{
-              return <li key={index} className="lista-categorias-li">{categoria}</li> 
+              return <ItensCategorias key={index} className="lista-categorias-li">{categoria}</ItensCategorias> 
             })
           }
 
-        </ul>
-        <input 
+        </ListaCategorias>
+        <InputCategorias 
           type="text" 
-          className="lista-categorias-input" 
           placeholder="Adicione a categoria"
           onKeyUp={this._handlerEventoInput.bind(this)}
         />
-      </section>
+      </SectionListaCategorias>
      );
   }
 }

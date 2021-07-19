@@ -1,6 +1,23 @@
 import React, { Component } from "react";
 import CardNota from "../CardNota";
-import "./estilo.css"
+import styled from "styled-components";
+
+const ListaNotas = styled.ul`
+  background-color: var(--fundo);
+  flex-grow: 2;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  list-style-type: none;
+  padding-left: 24px;
+  padding-top: 24px;
+`;
+
+const ItemListaNotas = styled.li`
+  margin: 12px;
+  max-width: 240px;
+  max-height: 400px;
+  display: inline;
+`
 
 class ListaDeNotas extends Component{
 
@@ -21,10 +38,10 @@ class ListaDeNotas extends Component{
 
   render(){
     return(
-      <ul className="lista-notas">
+      <ListaNotas>
         {this.state.notas.map((nota, index) => {
           return (
-            <li key={index} className="lista-notas-item">
+            <ItemListaNotas key={index}>
               <CardNota 
                 apagarNota={this.props.apagarNota} 
                 titulo={nota.titulo} 
@@ -32,11 +49,11 @@ class ListaDeNotas extends Component{
                 categoria = {nota.categoria}
                 indice={index}
               />
-            </li>
+            </ItemListaNotas>
           );
         })}
         
-      </ul>
+      </ListaNotas>
     );}
 }
 
